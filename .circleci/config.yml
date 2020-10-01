@@ -45,10 +45,10 @@ commands:
           command: |
             if [ << pipeline.parameters.publish-version >> !== '' ]; then
               echo "It got to the publish version portion"
-              npx lerna version << pipeline.parameters.publish-version >> --force-publish --no-git-tag-version --exact --yes
+          # npx lerna version << pipeline.parameters.publish-version >> --force-publish --no-git-tag-version --exact --yes
             else
               echo "It got to the publish type portion"
-              npx lerna version << pipeline.parameters.publish-type >> --force-publish --no-git-tag-version --exact --yes
+              # npx lerna version << pipeline.parameters.publish-type >> --force-publish --no-git-tag-version --exact --yes
             fi
           # git add .
           # export RELEASE_TAG="$(node -pe "require('./lerna.json').version")"
