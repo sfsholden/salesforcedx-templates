@@ -45,6 +45,12 @@ commands:
           command: |
             if [ ! -z << pipeline.parameters.publish-version >> ]; then
               echo "It got to the publish version portion"
+              if [[ << pipeline.parameters.publish-version >> =~ ^[0-9]{2}\.[0-9]{1,2}\.[0-9]{1,2}$ ]]; then
+                echo "Publish version << pipeline.parameters.publish-version >> is valid."
+              else
+                echo "Publish version << pipeline.parameters.publish-version >> does not fit the format xx.yy.zz. Exiting."
+                exit 1
+              fi
             else
               echo "It got to the publish type portion"
             fi
