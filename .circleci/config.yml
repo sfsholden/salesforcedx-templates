@@ -43,11 +43,10 @@ commands:
       - run:
           name: Bump package version
           command: |
-            if [ << pipeline.parameters.publish-version >> !== '' ]; then
+            if [ ! -z << pipeline.parameters.publish-version >> ]; then
               echo "It got to the publish version portion"
             else
               echo "It got to the publish type portion"
-              
             fi
           # npx lerna version << pipeline.parameters.publish-version >> --force-publish --no-git-tag-version --exact --yes
           # npx lerna version << pipeline.parameters.publish-type >> --force-publish --no-git-tag-version --exact --yes
