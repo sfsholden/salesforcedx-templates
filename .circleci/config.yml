@@ -3,7 +3,7 @@ version: 2.1
 
 orbs:
   win: circleci/windows@2.2.0
-  npm-release-management: salesforce/npm-release-management@2.0.0
+  # npm-release-management: salesforce/npm-release-management@2.0.0
 
 parameters:
   fingerprint:
@@ -181,8 +181,8 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/cli
-      - npm-release-management/publish:
-          use_tarfile: true
+      # - npm-release-management/publish:
+      #     use_tarfile: true
 
   publish-plugin:
     description: 'Publish plugin package'
@@ -192,13 +192,13 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/cli
-      - npm-release-management/sign
-      - npm-release-management/publish:
-          use_tarfile: true
-      - npm-release-management/verify-signed-package
-      - ssh-config
-      - npm-release-management/create-git-tag # this is looking up package.json
-      - run: git push origin main
+      # - npm-release-management/sign
+      # - npm-release-management/publish:
+      #     use_tarfile: true
+      # - npm-release-management/verify-signed-package
+      # - ssh-config
+      # - npm-release-management/create-git-tag # this is looking up package.json
+      # - run: git push origin main
 
 workflows:
   version: 2
